@@ -1,0 +1,17 @@
+// Breakpotins suffix
+$breakpoint-suffix: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1536px,
+);
+
+// Map function inside scss
+$font-size: (
+  sm: 0.875rem,
+  base: 1rem,
+  lg: 1.125rem,
+  xl: 1.25rem,
+  '2xl': 1.5rem,
+);

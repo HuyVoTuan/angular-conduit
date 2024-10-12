@@ -1,0 +1,296 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+.container {
+  width: 100%;
+  padding: 0 20%;
+  margin: auto;
+}
+
+// text color
+.text-white {
+  color: $color-white;
+}
+
+.text-theme-gray {
+  color: $color-gray;
+}
+
+// background
+.bg-white {
+  background-color: $color-white;
+}
+@include generate-class(\!bg-white, 'background-color', $color-white !important);
+
+.bg-primary {
+  background-color: $color-green;
+}
+
+.bg-accent {
+  background-color: $color-darker-green;
+}
+
+.bg-theme-gray {
+  background-color: $color-gray;
+}
+
+// flex
+.flex {
+  display: flex;
+
+  &-auto {
+    flex: 1 1 auto;
+  }
+
+  &-col {
+    flex-direction: column;
+  }
+
+  &-row {
+    flex-direction: row;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+}
+
+.self {
+  &-start {
+    align-self: flex-start;
+  }
+
+  &-end {
+    align-self: flex-end;
+  }
+
+  &-center {
+    align-self: center;
+  }
+
+  &-baseline {
+    align-self: baseline;
+  }
+
+  &-stretch {
+    align-self: stretch;
+  }
+}
+
+.justify {
+  &-start {
+    justify-content: flex-start;
+  }
+
+  &-end {
+    justify-content: flex-end;
+  }
+
+  &-center {
+    justify-content: center;
+  }
+
+  &-between {
+    justify-content: space-between;
+  }
+
+  &-around {
+    justify-content: space-around;
+  }
+}
+
+.items {
+  &-start {
+    align-items: flex-start;
+  }
+
+  &-end {
+    align-items: flex-end;
+  }
+
+  &-center {
+    align-items: center;
+  }
+
+  &-baseline {
+    align-items: baseline;
+  }
+
+  &-stretch {
+    align-items: stretch;
+  }
+}
+
+// gap
+@include generate-classes(gap, gap, 0, 4, 1, 4px);
+@include generate-classes(gap, gap, 0, 4, 1, 4px, true);
+@each $prop, $abbrev in (gap: gap) {
+  @include generate-classes(#{$abbrev}-x, row-#{$prop}, 0, 4, 1, 4px, true);
+  @include generate-classes(#{$abbrev}-y, column-#{$prop}, 0, 4, 1, 4px, true);
+}
+
+// width, height
+@each $prop, $abbrev in (width: w, height: h) {
+  @include generate-classes($abbrev, $prop, 0, 15);
+  // w-[0 --> 15]
+  @include generate-classes($abbrev, $prop, 4, 16, 4);
+  // w-[16, 20, 24, 28, etc...]
+}
+
+// margin and padding
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @include generate-classes($abbrev, $prop, 0, 10, 1, 4px);
+  @include generate-classes($abbrev, $prop, 0, 10, 1, 4px, true);
+
+  /** 
+    * Utility classes for margin and padding with corners.
+    * @example
+    * (mt, margin-top, 0, 10, 1, 4px, true)
+  **/
+  @each $child-prop, $child-abbrev in (top: t, bottom: b, left: l, right: r) {
+    @include generate-classes(#{$abbrev}#{$child-abbrev}, #{$prop}-#{$child-prop}, 0, 10, 1, 4px, false);
+    @include generate-classes(#{$abbrev}#{$child-abbrev}, #{$prop}-#{$child-prop}, 0, 10, 1, 4px, true);
+  }
+}
+
+// border
+@include generate-class('border-collapse', 'border-collapse', collapse);
+@include generate-classes('border', 'border-width', 0, 10, 1, 1px, true);
+
+@each $prop, $abbrev in (border: border) {
+  /** 
+    * Utility classes for border-width with corners.
+    * (border-t, border-top-width, 0, 10, 1, 1px, true)
+  **/
+  @each $child-prop, $child-abbrev in (top: t, bottom: b, left: l, right: r) {
+    @include generate-classes(#{$abbrev}-#{$child-abbrev}, #{$prop}-#{$child-prop}-width, 0, 4, 1, 1px, false);
+    @include generate-classes(#{$abbrev}-#{$child-abbrev}, #{$prop}-#{$child-prop}-width, 0, 4, 1, 1px, true);
+  }
+}
+
+// text
+.text-h1 {
+  font-size: 64px;
+  line-height: 80px;
+  letter-spacing: -1.5px;
+}
+.text-h2 {
+  font-size: 40px;
+  line-height: 56px;
+  letter-spacing: -1px;
+}
+.text-h3 {
+  font-size: 32px;
+  line-height: 56px;
+  letter-spacing: -1px;
+}
+.text-h4 {
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: -0.5px;
+}
+.text-h5 {
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.2px;
+}
+.text-h6 {
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.2px;
+}
+.text-h7 {
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+.text-s1 {
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+.text-s2 {
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.text-s3 {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+}
+.text-b1 {
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+.text-b2 {
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+.text-b3 {
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: -0.1px;
+}
+.text-d {
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.text {
+  &-center {
+    text-align: center;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-justify {
+    text-align: justify;
+  }
+
+  &-uppercase {
+    text-transform: uppercase;
+  }
+
+  &-lowercase {
+    text-transform: lowercase;
+  }
+
+  &-capitalize {
+    text-transform: capitalize;
+  }
+
+  &-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.font {
+  &-bold {
+    font-weight: bold;
+  }
+
+  &-normal {
+    font-weight: normal;
+  }
+}
+
+// position
+@each $prop in (relative, absolute, fixed, sticky) {
+  @include generate-class(#{$prop}, position, #{$prop});
+}
+
+@each $prop, $abbrev in (top: t, bottom: b, left: l, right: r) {
+  @include generate-classes(#{$abbrev}, #{$prop}, 0, 4, 1, 1px, false);
+  @include generate-classes(#{$abbrev}, #{$prop}, 0, 4, 1, 1px, true);
+}

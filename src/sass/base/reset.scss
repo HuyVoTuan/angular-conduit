@@ -1,0 +1,25 @@
+@import '../abstracts/variables';
+@import '../abstracts/typography';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-source-sans;
+  color: $color-blue-black;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
