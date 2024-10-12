@@ -1,0 +1,13 @@
+.app-sign-in {
+  padding: 4rem;
+
+  .sign-in {
+    &-form {
+      width: 100%;
+    }
+  }
+}
+
+.sign-in-btn {
+  align-self: flex-end;
+}
