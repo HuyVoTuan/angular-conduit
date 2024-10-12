@@ -1,0 +1,29 @@
+<div class="flex flex-row items-center gap-2">
+  <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  <div class="flex-auto">
+    <app-header />
+  </div>
+</div>
+
+<app-banner />
+
+<mat-sidenav-container>
+  <mat-sidenav #snav [mode]="'over'" [fixedTopGap]="64" [fixedInViewport]="true">
+    <div class="flex flex-col p-2">
+      <button class="self-end" mat-icon-button (click)="snav.close()"><mat-icon>arrow_left</mat-icon></button>
+      <div class="flex flex-col items-start justify-start gap-4">
+        <ng-container *ngFor="let item of displayMenu">
+          <a [routerLink]="['/routePath']" routerLinkActive="router-link-active">{{ item.name | titlecase }}</a>
+        </ng-container>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="height: calc(100vh - 128px - 96px - 62px); overflow: auto">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<app-footer class="absolute b-0 l-0 r-0 text-white bg-theme-gray" />

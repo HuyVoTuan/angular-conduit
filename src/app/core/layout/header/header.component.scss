@@ -1,0 +1,81 @@
+@import '../../../../sass/abstracts/colors.scss';
+// .navbar {
+//   &__logo {
+//     font-size: 2rem;
+//     text-transform: lowercase;
+//     color: var(--green-color);
+//     font-family: var(--font-titillium);
+//     text-decoration: none;
+//   }
+
+//   &__menu {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+
+//     &__item {
+//       list-style-type: none;
+//       margin-right: 1rem;
+
+//       a {
+//         text-decoration: none;
+//         display: flex;
+//         align-items: center;
+//         gap: 0.5rem;
+//         font-size: 1.25rem;
+//         padding: 0.75rem 1.25rem;
+//         color: var(--gray-color);
+//       }
+
+//       a:hover {
+//         cursor: pointer;
+//         color: var(--blue-black-color);
+//       }
+//     }
+
+//     &__item:last-child {
+//       margin-right: 0;
+//     }
+//   }
+// }
+
+// .active-router-link {
+//   color: var(--blue-black-color);
+// }
+
+.toolbar {
+  &__logo {
+    color: $color-green;
+    text-decoration: none;
+  }
+
+  &__item {
+    list-style-type: none;
+
+    a {
+      padding: 0.25em 1em;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: $color-gray;
+
+      ion-icon {
+        vertical-align: text-top;
+      }
+    }
+
+    a:hover {
+      cursor: pointer;
+      color: $color-blue-black;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .toolbar {
+    &__menu {
+      display: none;
+    }
+  }
+  
+}
