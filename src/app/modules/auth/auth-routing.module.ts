@@ -4,6 +4,7 @@ import { AuthGuard } from '../../core/guards/auth.guard';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignOutComponent } from './sign-out/sign-out.component';
 
 const routes: Routes = [
   {
@@ -16,9 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'sign-out',
-    loadComponent() {
-      return import('./sign-out/sign-out.component').then((m) => m.SignOutComponent);
-    },
+    component: SignOutComponent,
     canActivate: [AuthGuard],
   },
 ];
