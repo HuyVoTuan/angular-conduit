@@ -1,4 +1,5 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ChangeDetectionStrategy, ViewChild, Component, Inject, ChangeDetectorRef } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     <div class="page-layout">
       <header class="page-header">
         <div class="flex flex-row items-center justify-around gap-2 pl-2 pr-2">
-          <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+          <button mat-icon-button (click)="onToggleSidenav()"><mat-icon>menu</mat-icon></button>
           <div class="flex-auto">
             <app-header />
           </div>
@@ -15,7 +16,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
       </header>
 
       <main class="page-content">
-        <mat-drawer-container [hasBackdrop]="true" class="page-content-container">
+        <mat-drawer-container [hasBackdrop]="isShown" class="page-content-container">
           <mat-drawer #snav [mode]="'over'">
             <div class="flex flex-col p-2">
               <div class="flex flex-col items-start justify-start gap-4">
@@ -36,10 +37,12 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
       </footer>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   title = 'conduit';
-  displayMenu = [
+  isShown: boolean = false;
+  readonly displayMenu = [
     {
       name: 'Home',
       url: '/',
@@ -53,4 +56,14 @@ export class AppComponent {
       url: '/auth/sign-up',
     },
   ];
+
+  @ViewChild('snav') snav!: MatDrawer;
+
+  constructor(@Inject(ChangeDetectorRef) private cdr: ChangeDetectorRef) {}
+
+  onToggleSidenav(): void {
+    this.snav.toggle();
+    this.isShown = this.snav.opened;
+    this.cdr.detectChanges();
+  }
 }
