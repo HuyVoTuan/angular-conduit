@@ -16,6 +16,10 @@
   color: $color-gray;
 }
 
+.text-primary {
+  color: $color-darker-green;
+}
+
 // background
 .bg-white {
   background-color: $color-white;
@@ -34,7 +38,12 @@
   background-color: $color-gray;
 }
 
-// flex
+// display block
+.block {
+  display: block;
+}
+
+// display flex
 .flex {
   display: flex;
 
@@ -138,6 +147,9 @@
 }
 
 // margin and padding
+.m-auto {
+  margin: auto;
+}
 @each $prop, $abbrev in (margin: m, padding: p) {
   @include generate-classes($abbrev, $prop, 0, 10, 1, 4px);
   @include generate-classes($abbrev, $prop, 0, 10, 1, 4px, true);
