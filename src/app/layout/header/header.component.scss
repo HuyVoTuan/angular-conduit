@@ -1,0 +1,37 @@
+@import '../../../sass/abstracts/colors.scss';
+
+.toolbar {
+  &__logo {
+    color: $color-green;
+    text-decoration: none;
+  }
+
+  &__item {
+    list-style-type: none;
+
+    a {
+      padding: 0.25em 1em;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      color: $color-gray;
+
+      ion-icon {
+        vertical-align: text-top;
+      }
+    }
+
+    a:hover {
+      cursor: pointer;
+      color: $color-blue-black;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .toolbar {
+    &__menu {
+      display: none;
+    }
+  }
+}
